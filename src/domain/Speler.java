@@ -41,7 +41,7 @@ public class Speler {
 
     public void setNaam(String naam) {
         if (!isvalidNaam(naam)) {
-            throw new DomainException("naam is ongeldig");
+            throw new DomainException("naam is ongeldig. \n  De naam moet minstens 1 niet spatie bevatten." );
         }
         this.naam = naam;
     }
@@ -56,7 +56,7 @@ public class Speler {
 
     public void setScore(int score) {
         if (!isvalidScore(score)) {
-            throw new DomainException("score is ongeldig");
+            throw new DomainException("score is ongeldig \n  De score moet groter of gelijk zijn aan 0.");
         }
         this.score = score;
     }
