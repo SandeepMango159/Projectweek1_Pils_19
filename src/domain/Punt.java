@@ -30,6 +30,6 @@ public class Punt {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "(" + this.getX() + ", " +this.getY() + ")";
     }
 }
