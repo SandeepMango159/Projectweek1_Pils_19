@@ -24,7 +24,7 @@ public class RechthoekApp {
         invoerY = new TextField();
         invoerBreedteLabel = new Label("Geef de breedte van de rechthoek ");
         invoerBreedte = new TextField();
-        invoerHoogteLabel = new Label("Geef de breedte van de rechthoek ");
+        invoerHoogteLabel = new Label("Geef de hoogte van de rechthoek ");
         invoerHoogte = new TextField();
 
         root.add(invoerXLabel,0,0);
@@ -36,7 +36,7 @@ public class RechthoekApp {
                 root.add(invoerYLabel, 0, 1);
                 root.add(invoerY, 1, 1);
             }
-            catch(NumberFormatException e){
+            catch(Exception e){
                 invoerX.clear();
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText("x coördinaat moet een geheel getal zijn");
@@ -49,7 +49,7 @@ public class RechthoekApp {
                 linkerBovenhoek = new Punt(Integer.parseInt(invoerX.getText()), Integer.parseInt(invoerY.getText()));
                 root.add(invoerBreedteLabel, 0, 2);
                 root.add(invoerBreedte, 1, 2);
-            } catch(NumberFormatException e){
+            } catch(Exception e){
 
                 invoerY.clear();
 
@@ -61,12 +61,14 @@ public class RechthoekApp {
 
         invoerBreedte.setOnAction(eventIngaveY -> {
             try {
-                Integer.parseInt(invoerBreedte.getText());
+                if (Integer.parseInt(invoerBreedte.getText()) <= 0) {
+                    throw new Exception("breedte moet een positief geheel getal zijn");
+                }
                 root.add(invoerHoogteLabel, 0, 3);
                 root.add(invoerHoogte, 1, 3);
-            } catch(NumberFormatException e){
+            } catch(Exception e){
 
-                invoerY.clear();
+                invoerBreedte.clear();
 
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText("breedte moet een positief geheel getal zijn");
@@ -82,9 +84,9 @@ public class RechthoekApp {
                 Text uitvoer = new Text();
                 uitvoer.setText(rechthoek.toString());
                 root.add(uitvoer, 0, 0);
-            } catch(NumberFormatException e){
+            } catch(Exception e){
 
-                invoerY.clear();
+                invoerHoogte.clear();
 
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText("hoogte moet een positief geheel getal zijn");
