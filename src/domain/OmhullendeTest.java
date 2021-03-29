@@ -83,4 +83,33 @@ public class OmhullendeTest {
     public void equals_moet_false_teruggeven_als_parameter_null(){
         assertFalse(omhullende.equals(null));
     }
+
+    @Test
+    public void get_minimum_x(){
+        Punt andereLinkerBovenhoek = new Punt(140,180);
+        Omhullende minX = new Omhullende(andereLinkerBovenhoek, breedte, hoogte);
+        assertEquals(140,minX.getMinimumX());
+    }
+
+    @Test
+    public void get_minimum_y(){
+        Punt andereLinkerBovenhoek = new Punt(140,180);
+        Omhullende minY = new Omhullende(andereLinkerBovenhoek, breedte, hoogte);
+        assertEquals(180,minY.getMinimumY());
+    }
+
+    @Test
+    public void get_maximum_x(){
+        Punt andereLinkerBovenhoek = new Punt(140,180);
+        Omhullende maxX = new Omhullende(andereLinkerBovenhoek, breedte, hoogte);
+        assertEquals(140 + breedte ,maxX.getMaximumX());
+    }
+
+    @Test
+    public void get_maximum_y(){
+        Punt andereLinkerBovenhoek = new Punt(140,180);
+        Omhullende maxY = new Omhullende(andereLinkerBovenhoek, breedte, hoogte);
+        assertEquals(180 + hoogte,maxY.getMaximumY());
+    }
+
 }
