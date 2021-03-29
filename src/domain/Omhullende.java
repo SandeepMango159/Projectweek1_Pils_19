@@ -1,11 +1,11 @@
 package domain;
 
-public class Rechthoek extends Vorm{
+public class Omhullende {
     private Punt linkerBovenhoek;
     private int breedte;
     private int hoogte;
 
-    public Rechthoek(Punt hoek, int breedte, int hoogte) {
+    public Omhullende(Punt hoek, int breedte, int hoogte) {
         setLinkerBovenhoek(hoek);
         setBreedte(breedte);
         setHoogte(hoogte);
@@ -24,14 +24,14 @@ public class Rechthoek extends Vorm{
     }
 
     public void setBreedte(int breedte) {
-        if (breedte <= 0) {
+        if (breedte < 0) {
             throw new DomainException("Breedte is ongeldig");
         }
         this.breedte = breedte;
     }
 
     public void setHoogte(int hoogte) {
-        if (hoogte <= 0) {
+        if (hoogte < 0) {
             throw new DomainException("Hoogte is ongeldig");
         }
         this.hoogte = hoogte;
@@ -47,8 +47,8 @@ public class Rechthoek extends Vorm{
     @Override
     public boolean equals(Object object) {
         boolean equal = false;
-        if (object instanceof Rechthoek) {
-            Rechthoek other = (Rechthoek) object;
+        if (object instanceof Omhullende) {
+            Omhullende other = (Omhullende) object;
             equal = (this.getLinkerBovenhoek().equals(other.getLinkerBovenhoek()) && this.getBreedte()==(other.getBreedte()) && this.getHoogte()==(other.getHoogte()) ) ;
         }
         return equal;
@@ -56,11 +56,22 @@ public class Rechthoek extends Vorm{
 
     @Override
     public String toString() {
-        return  "Rechthoek: linkerbovenhoek: (" + this.getLinkerBovenhoek().getX() + ", " + this.getLinkerBovenhoek().getY() + ") - breedte: "  + this.breedte + " - hoogte: " + this.hoogte + "\nOmhullende: ("
-                + this.getOmhullende().getLinkerBovenhoek().getX() + ", " + this.getOmhullende().getLinkerBovenhoek().getY() + ") - "  + this.getOmhullende().getBreedte() + " - " + this.getOmhullende().getHoogte();
+        return  "Omhullende: (" + this.getLinkerBovenhoek().getX() + ", " + this.getLinkerBovenhoek().getY() + ") - "  + this.breedte + " - " + this.hoogte;
     }
 
-    public Omhullende getOmhullende() {
-        return new Omhullende(getLinkerBovenhoek(), getBreedte(), getHoogte());
+    public int getMinimumX() {
+        return this.getLinkerBovenhoek().getX();
+    }
+
+    public int getMaximumX() {
+        return this.getLinkerBovenhoek().getX() + breedte;
+    }
+
+    public int getMinimumY() {
+        return this.getLinkerBovenhoek().getY();
+    }
+
+    public int getMaximumY() {
+        return this.getLinkerBovenhoek().getY() + hoogte;
     }
 }
