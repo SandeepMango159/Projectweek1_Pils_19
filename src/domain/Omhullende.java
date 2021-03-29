@@ -44,6 +44,21 @@ public class Omhullende {
         this.linkerBovenhoek = linkerBovenhoek;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        boolean equal = false;
+        if (object instanceof Omhullende) {
+            Omhullende other = (Omhullende) object;
+            equal = (this.getLinkerBovenhoek().equals(other.getLinkerBovenhoek()) && this.getBreedte()==(other.getBreedte()) && this.getHoogte()==(other.getHoogte()) ) ;
+        }
+        return equal;
+    }
+
+    @Override
+    public String toString() {
+        return  "Omhullende: (" + this.getLinkerBovenhoek().getX() + ", " + this.getLinkerBovenhoek().getY() + ") - "  + this.breedte + " - " + this.hoogte;
+    }
+
     public int getMinimumX() {
         return this.getLinkerBovenhoek().getX();
     }
