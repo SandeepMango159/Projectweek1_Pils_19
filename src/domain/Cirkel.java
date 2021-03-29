@@ -15,7 +15,7 @@ public class Cirkel {
             this.middelpunt = newMiddelpunt;
         }
         else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Middelpunt mag geen  null zijn");
         }
     }
 
@@ -24,7 +24,7 @@ public class Cirkel {
             this.radius = newRadius;
         }
         else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Straal mag niet gelijk aan nul of negatief zijn");
         }
     }
 
