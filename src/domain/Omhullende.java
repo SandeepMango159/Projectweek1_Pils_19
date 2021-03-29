@@ -44,5 +44,19 @@ public class Omhullende {
         this.linkerBovenhoek = linkerBovenhoek;
     }
 
-    public int getMinimumX()
+    public int getMinimumX() {
+        return this.getLinkerBovenhoek().getX();
+    }
+
+    public int getMaximumX() {
+        return this.getLinkerBovenhoek().getX() + breedte;
+    }
+
+    public int getMinimumY() {
+        return this.getLinkerBovenhoek().getY();
+    }
+
+    public int getMaximumY() {
+        return this.getLinkerBovenhoek().getY() + hoogte;
+    }
 }
