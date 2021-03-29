@@ -18,11 +18,9 @@ public class FiguurApp {
         keuzeMenu.setOnAction(eventKeuze -> {
             keuzeMenu.setVisible(false);
             if (keuzeMenu.getValue()!=null){
-//                if (keuzeMenu.getValue().equals("Cirkel")) {
-//                    new CirkelApp(root);
-//
-//                } else
-                if (keuzeMenu.getValue().equals("Rechthoek")) {
+                if (keuzeMenu.getValue().equals("Cirkel")) {
+                    new CirkelApp(root);
+                } else if (keuzeMenu.getValue().equals("Rechthoek")) {
                     new RechthoekApp(root);
                 }
 
