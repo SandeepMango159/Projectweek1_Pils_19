@@ -42,7 +42,7 @@ public class HintWoord {
     public String toString(){
         String result= "";
         for (HintLetter element: hintwoord){
-            result += ' ' + element.toChar();
+            result += " " + element.toChar();
         }
         return result.substring(1);
     }

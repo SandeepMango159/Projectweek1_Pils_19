@@ -12,7 +12,7 @@ public class WoordRadenApp {
     private TextField invoerLetter;
     private Alert foutenboodschap = new Alert(Alert.AlertType.WARNING);
 
-    public WoordRadenApp(GridPane root, Speler matijs){
+    public WoordRadenApp(GridPane root, Speler speler){
         HintWoord woord = new HintWoord("hangmanspelletje");
         rarara = new Label("Rarara, welk woord zoeken we?");
         hints = new Label(woord.toString());
@@ -33,18 +33,28 @@ public class WoordRadenApp {
                 foutenboodschap.showAndWait();
             }else{
                 root.getChildren().clear();
-                invoerLetter.clear();
-               if (woord.raad(invoerLetter.getText().charAt(0)) ){
-                   feedback = new Label("Super, doe zo voort!");
-               }else{
+                boolean geraden = false;
+                if (woord.raad(invoerLetter.getText().charAt(0)) ){
+                    geraden = woord.isGeraden();
+                    if (!geraden) {
+                        feedback = new Label("Super, doe zo voort!");
+                    }
+                }else{
                    feedback = new Label("Helaas,volgende keer beter!");
-               }
-               hints.setText(woord.toString());
-                root.add(feedback,0,0);
-                root.add(rarara,0,1);
-                root.add(hints, 0, 2);
-                root.add(geefLetter, 0,4);
-                root.add(invoerLetter, 0,5);
+                }
+                if (!geraden) {
+                    invoerLetter.clear();
+                    hints.setText(woord.toString());
+                    root.add(feedback,0,0);
+                    root.add(rarara,0,1);
+                    root.add(hints, 0, 2);
+                    root.add(geefLetter, 0,4);
+                    root.add(invoerLetter, 0,5);
+                }
+                else {
+                    feedback = new Label("Goed gedaan " + speler.getNaam() + "! Je hebt het woord geraden!");
+                    root.add(feedback, 0, 0);
+                }
 
             }
         });
