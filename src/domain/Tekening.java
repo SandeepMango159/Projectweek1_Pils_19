@@ -13,7 +13,7 @@ public class Tekening {
 
     public Tekening(String naam) {
         if (naam == null|| naam.trim().isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("De naam mag niet leeg zijn.");
         }
         this.naam = naam;
         this.vormen = new ArrayList<Vorm>();
@@ -32,14 +32,18 @@ public class Tekening {
 
     public void voegToe(Vorm vorm) {
         if (vorm == null || this.bevat(vorm)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("De vorm mag niet leeg zijn.");
+        }
+        if (vorm.getOmhullende().getMinimumX() < MIN_X || vorm.getOmhullende().getMinimumY() < MIN_Y
+                || vorm.getOmhullende().getMaximumX() > MAX_X || vorm.getOmhullende().getMaximumY() > MAX_Y) {
+            throw new IllegalArgumentException("De vorm ligt buiten de tekening");
         }
         this.vormen.add(vorm);
     }
 
     public Vorm getVorm(int i) {
         if (i < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("De index mag niet kleiner dan 0 zijn.");
         }
         return this.vormen.get(i);
     }
@@ -50,14 +54,14 @@ public class Tekening {
 
     public void verwijder(Vorm vorm) {
         if (vorm == null || !this.bevat(vorm)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Deze vorm zit niet in de tekening.");
         }
         this.vormen.remove(vorm);
     }
 
     public boolean bevat (Vorm vorm) {
         if (vorm == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("De vorm mag niet leeg zijn.");
         }
         return this.vormen.contains(vorm);
     }

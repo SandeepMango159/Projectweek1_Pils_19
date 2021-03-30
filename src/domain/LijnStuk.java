@@ -18,7 +18,7 @@ public class LijnStuk extends Vorm{
 
    private void setStartEnEindPunt(Punt startPunt, Punt eindPunt) {
        if (startPunt == null || eindPunt == null || startPunt.equals(eindPunt)) {
-           throw new DomainException();
+           throw new DomainException("De punten mogen niet leeg of gelijk zijn.");
        }
        this.startPunt = startPunt;
        this.eindPunt = eindPunt;
