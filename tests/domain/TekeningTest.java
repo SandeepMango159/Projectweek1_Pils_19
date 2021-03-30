@@ -17,6 +17,7 @@ public class TekeningTest {
     private Vorm raambalk2;
     private Vorm schouwNietInTekening;
 
+
     @Before
     public void setUp() {
         gebouw = new Rechthoek(new Punt(100, 200), 200, 180);
@@ -156,6 +157,94 @@ public class TekeningTest {
         Tekening huis = createHuisZonderShouw();
         huis.verwijder(raam);
         assertFalse(huis.bevat(raam));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void Test_VoegToe_Moet_exception_gooien_Als_de_minimumX_kleiner_is_dan_de_MinX_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        huis.voegToe(new Rechthoek(new Punt(-10, 10), 20, 20));
+    }
+
+    @Test
+    public void Test_VoegToe_Moet_vorm_toevoegen_Als_de_minimumX_gelijk_is_aan_de_MinX_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        Vorm vorm = new Rechthoek(new Punt(0, 10), 20, 20);
+        huis.voegToe(vorm);
+        assertTrue(huis.bevat(vorm));
+    }
+
+    @Test
+    public void Test_VoegToe_Moet_vorm_toevoegen_Als_de_minimumX_groter_is_dan_de_MinX_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        Vorm vorm = new Rechthoek(new Punt(50, 10), 20, 20);
+        huis.voegToe(vorm);
+        assertTrue(huis.bevat(vorm));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void Test_VoegToe_Moet_exception_gooien_Als_de_minimumY_kleiner_is_dan_de_MinY_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        huis.voegToe(new Rechthoek(new Punt(50, -10), 20, 20));
+    }
+
+    @Test
+    public void Test_VoegToe_Moet_vorm_toevoegen_Als_de_minimumY_gelijk_is_aan_de_MinY_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        Vorm vorm = new Rechthoek(new Punt(0, 0), 20, 20);
+        huis.voegToe(vorm);
+        assertTrue(huis.bevat(vorm));
+    }
+
+    @Test
+    public void Test_VoegToe_Moet_vorm_toevoegen_Als_de_minimumY_groter_is_dan_de_MinY_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        Vorm vorm = new Rechthoek(new Punt(50, 10), 20, 20);
+        huis.voegToe(vorm);
+        assertTrue(huis.bevat(vorm));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void Test_VoegToe_Moet_exception_gooien_Als_de_maximumX_groter_is_dan_de_MaxX_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        huis.voegToe(new Rechthoek(new Punt(450, 0), 20, 20));
+    }
+
+    @Test
+    public void Test_VoegToe_Moet_vorm_toevoegen_Als_de_maximumX_gelijk_is_aan_de_MaxX_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        Vorm vorm = new Rechthoek(new Punt(379, 0), 20, 20);
+        huis.voegToe(vorm);
+        assertTrue(huis.bevat(vorm));
+    }
+
+    @Test
+    public void Test_VoegToe_Moet_vorm_toevoegen_Als_de_maximumX_kleiner_is_dan_de_MaxX_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        Vorm vorm = new Rechthoek(new Punt(370, 10), 20, 20);
+        huis.voegToe(vorm);
+        assertTrue(huis.bevat(vorm));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void Test_VoegToe_Moet_exception_gooien_Als_de_maximumY_groter_is_dan_de_MaxY_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        huis.voegToe(new Rechthoek(new Punt(50, 450), 20, 20));
+    }
+
+    @Test
+    public void Test_VoegToe_Moet_vorm_toevoegen_Als_de_maximumY_gelijk_is_aan_de_MaxY_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        Vorm vorm = new Rechthoek(new Punt(50, 379), 20, 20);
+        huis.voegToe(vorm);
+        assertTrue(huis.bevat(vorm));
+    }
+
+    @Test
+    public void Test_VoegToe_Moet_vorm_toevoegen_Als_de_maximumY_kleiner_is_dan_de_MaxY_van_de_tekening() {
+        Tekening huis = createHuisMetSchouw();
+        Vorm vorm = new Rechthoek(new Punt(10, 10), 20, 20);
+        huis.voegToe(vorm);
+        assertTrue(huis.bevat(vorm));
     }
 
     public Tekening createHuisMetSchouw() {

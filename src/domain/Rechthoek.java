@@ -61,8 +61,8 @@ public class Rechthoek extends Vorm implements Drawable{
 
     @Override
     public String toString() {
-        return  "Rechthoek: linkerbovenhoek: (" + this.getLinkerBovenhoek().getX() + ", " + this.getLinkerBovenhoek().getY() + ") - breedte: "  + this.breedte + " - hoogte: " + this.hoogte + "\nOmhullende: ("
-                + this.getOmhullende().getLinkerBovenhoek().getX() + ", " + this.getOmhullende().getLinkerBovenhoek().getY() + ") - "  + this.getOmhullende().getBreedte() + " - " + this.getOmhullende().getHoogte();
+        return  "Rechthoek: linkerbovenhoek: (" + this.getLinkerBovenhoek().getX() + ", " + this.getLinkerBovenhoek().getY() + ") - breedte: "  + this.breedte + " - hoogte: " + this.hoogte + "\n"
+                + super.toString();
     }
 
 

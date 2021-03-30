@@ -62,7 +62,7 @@ public class Cirkel extends Vorm implements Drawable{
 
     @Override
     public String toString() {
-        return "Cirkel: middelpunt: " + getMiddelPunt().toString() + " - straal: " + getRadius();
+        return "Cirkel: middelpunt: " + getMiddelPunt().toString() + " - straal: " + getRadius() + "\n" + super.toString();
     }
 
 

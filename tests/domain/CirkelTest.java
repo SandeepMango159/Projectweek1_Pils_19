@@ -76,5 +76,12 @@ public class CirkelTest {
         assertNotEquals(test1, test2);
     }
 
+    @Test
+    public void Test_omhullendevorm(){
+        Cirkel test1 = new Cirkel(new Punt(100,150) ,10);
+        Omhullende omhullende = new Omhullende(new Punt(90,140),2*10, 2*10 );
+        assertEquals(omhullende,test1.getOmhullende());
+    }
+
 
 }

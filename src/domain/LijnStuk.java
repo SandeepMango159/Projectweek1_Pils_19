@@ -23,7 +23,7 @@ public class LijnStuk extends Vorm implements Drawable{
 
    private void setStartEnEindPunt(Punt startPunt, Punt eindPunt) {
        if (startPunt == null || eindPunt == null || startPunt.equals(eindPunt)) {
-           throw new DomainException();
+           throw new DomainException("De punten mogen niet leeg of gelijk zijn.");
        }
        this.startPunt = startPunt;
        this.eindPunt = eindPunt;
@@ -43,7 +43,7 @@ public class LijnStuk extends Vorm implements Drawable{
 
     @Override
     public String toString() {
-        return "Lijn: startpunt: " + this.getStartPunt().toString() + " - eindpunt: " + this.getEindPunt().toString();
+        return "Lijn: startpunt: " + this.getStartPunt().toString() + " - eindpunt: " + this.getEindPunt().toString() + "\n" + super.toString();
     }
 
     @Override
