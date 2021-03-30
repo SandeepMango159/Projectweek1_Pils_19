@@ -92,7 +92,7 @@ public class Driehoek extends Vorm {
         //  Eerst nog sorteren
         sorteerHoekPunten();
         
-        return "hoekpunt1: " + gesorteerdeHoekpunten[0].toString() + " - hoekpunt2: " + gesorteerdeHoekpunten[1].toString() + " - hoekpunt3: " + gesorteerdeHoekpunten[2].toString();
+        return "hoekpunt1: " + gesorteerdeHoekpunten[0].toString() + " - hoekpunt2: " + gesorteerdeHoekpunten[1].toString() + " - hoekpunt3: " + gesorteerdeHoekpunten[2].toString() + "\n" + super.toString();
     }
 
     public boolean equals(Object object) {

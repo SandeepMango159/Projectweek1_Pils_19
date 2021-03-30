@@ -38,7 +38,7 @@ public class LijnStuk extends Vorm{
 
     @Override
     public String toString() {
-        return "Lijn: startpunt: " + this.getStartPunt().toString() + " - eindpunt: " + this.getEindPunt().toString();
+        return "Lijn: startpunt: " + this.getStartPunt().toString() + " - eindpunt: " + this.getEindPunt().toString() + "\n" + super.toString();
     }
 
     @Override
