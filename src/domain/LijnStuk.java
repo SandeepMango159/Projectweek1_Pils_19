@@ -1,6 +1,11 @@
 package domain;
 
-public class LijnStuk extends Vorm{
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+
+
+public class LijnStuk extends Vorm implements Drawable{
     private Punt startPunt;
     private Punt eindPunt;
 
@@ -48,5 +53,16 @@ public class LijnStuk extends Vorm{
         int rightX = Math.max(getStartPunt().getX(), getEindPunt().getX());
         int rightY = Math.max(getStartPunt().getY(), getEindPunt().getY());
         return new Omhullende(new Punt(leftX, leftY), rightX - leftX, rightY - leftY);
+    }
+
+    @Override
+    public void teken(Pane root) {
+
+        Line lijn = new Line(this.getStartPunt().getX(), this.getStartPunt().getY(), this.getEindPunt().getX(), this.getEindPunt().getY());
+        lijn.setFill(this.getkleur());
+        // Breedte van de lijn ook nog, zet standaard nu ff op 5
+        lijn.setStrokeWidth(5);
+        root.getChildren().add(lijn);
+
     }
 }

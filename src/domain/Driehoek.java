@@ -1,8 +1,13 @@
 package domain;
 
-import java.util.Arrays;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polyline;
 
-public class Driehoek extends Vorm {
+import java.util.Arrays;
+import java.util.List;
+
+public class Driehoek extends Vorm implements Drawable{
 
 
 
@@ -87,6 +92,12 @@ public class Driehoek extends Vorm {
 
     }
 
+    // Toch ff ni nodig
+//    public Punt[] getGesorteerdeHoekpunten() {
+//        sorteerHoekPunten();
+//        return this.gesorteerdeHoekpunten;
+//    }
+
     @Override
     public String toString() {
         //  Eerst nog sorteren
@@ -114,6 +125,7 @@ public class Driehoek extends Vorm {
         }
     }
 
+
     @Override
     public Omhullende getOmhullende() {
         int leftX = Math.min(Math.min(getHoekPunt1().getX(), getHoekPunt2().getX()), getHoekPunt3().getX());
@@ -123,4 +135,28 @@ public class Driehoek extends Vorm {
         return new Omhullende(new Punt(leftX, leftY), rightX - leftX, rightY - leftY);
     }
 
+    @Override
+    public void teken(Pane root) {
+
+        // Pak alle coordinaten en doe ze in een array
+        int[] hoekInts = {this.getHoekPunt1().getX(), this.getHoekPunt1().getY(), this.getHoekPunt2().getX(), this.getHoekPunt2().getY(), this.getHoekPunt3().getX(), this.getHoekPunt3().getY()};
+
+        // Heb doubles nodig in polyline om driehoek te make
+        double[] hoekDoubles = new double[hoekInts.length];
+
+        // Verplaats ze naar deze array
+        for(int i=0; i<hoekInts.length; i++) {
+            hoekDoubles[i] = hoekInts[i];
+        }
+
+        // Geef ze mee aan de constructor
+        Polyline driehoek = new Polyline(hoekDoubles);
+        driehoek.setFill(this.getkleur());
+        driehoek.setStroke(Color.BLACK);
+
+        root.getChildren().add(driehoek);
+
+
+
+    }
 }

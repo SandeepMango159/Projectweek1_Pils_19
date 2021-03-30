@@ -1,9 +1,11 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tekening {
+public class Tekening implements Drawable{
     public static final int MIN_X = 0;
     public static final int MIN_Y = 0;
     public static final int MAX_X = 399;
@@ -86,5 +88,12 @@ public class Tekening {
             result += v.toString() + "\n";
         }
         return result;
+    }
+
+    @Override
+    public void teken(Pane root) {
+        for (Vorm v : vormen) {
+            v.teken(root);
+        }
     }
 }

@@ -24,7 +24,7 @@ public class CirkelTest {
     public void Test_cirkel_geldig_middelpunt_en_straal() {
         Cirkel test = new Cirkel(puntGeldig, straalGeldig);
 
-        assertEquals(puntGeldig, test.getMiddelpunt());
+        assertEquals(puntGeldig, test.getMiddelPunt());
         assertEquals(straalGeldig, test.getRadius());
     }
 
