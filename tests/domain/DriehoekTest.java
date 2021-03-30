@@ -82,4 +82,11 @@ public class DriehoekTest {
 
     }
 
+    @Test
+    public void Test_omhullendevorm(){
+        Driehoek test1 = new Driehoek(new Punt(100,100) ,new Punt(120,100), new Punt(110,110));
+        Omhullende omhullende = new Omhullende(new Punt(100,100),20, 10 );
+        assertEquals(omhullende,test1.getOmhullende());
+    }
+
 }

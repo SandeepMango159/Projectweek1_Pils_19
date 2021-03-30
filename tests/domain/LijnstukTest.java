@@ -53,4 +53,10 @@ public class LijnstukTest {
         LijnStuk lijnStuk = new LijnStuk(punt1, punt2);
         assertFalse(lijnStuk.equals(null));
     }
+    @Test
+    public void Test_omhullendevorm(){
+        LijnStuk test1 = new LijnStuk(new Punt(100,150) ,new Punt(110,160));
+        Omhullende omhullende = new Omhullende(new Punt(100,150),10, 10 );
+        assertEquals(omhullende,test1.getOmhullende());
+    }
 }

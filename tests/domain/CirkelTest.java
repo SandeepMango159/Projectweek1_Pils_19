@@ -79,9 +79,8 @@ public class CirkelTest {
     @Test
     public void Test_omhullendevorm(){
         Cirkel test1 = new Cirkel(new Punt(100,150) ,10);
-//        (100,150) en 10 radius
         Omhullende omhullende = new Omhullende(new Punt(90,140),2*10, 2*10 );
-        assertEquals(omhullende.equals(test1.getOmhullende()));
+        assertEquals(omhullende,test1.getOmhullende());
     }
 
 
