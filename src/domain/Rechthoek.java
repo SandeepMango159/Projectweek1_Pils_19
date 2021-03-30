@@ -60,6 +60,7 @@ public class Rechthoek extends Vorm{
                 + this.getOmhullende().getLinkerBovenhoek().getX() + ", " + this.getOmhullende().getLinkerBovenhoek().getY() + ") - "  + this.getOmhullende().getBreedte() + " - " + this.getOmhullende().getHoogte();
     }
 
+    @Override
     public Omhullende getOmhullende() {
         return new Omhullende(getLinkerBovenhoek(), getBreedte(), getHoogte());
     }
