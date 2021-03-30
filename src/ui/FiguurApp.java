@@ -29,6 +29,9 @@ public class FiguurApp {
                 else if (keuzeMenu.getValue().equals("Driehoek")) {
                     new DriehoekApp(root);
                 }
+                if (keuzeMenu.getValue().equals("Driehoek")) {
+                    new DriehoekApp(root);
+                }
 
             }
         });

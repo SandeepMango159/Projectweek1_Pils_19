@@ -38,7 +38,7 @@ public class Cirkel extends Vorm{
 
     public boolean equals(Object andereCirkel) {
 
-        if (andereCirkel != null) {
+        if (andereCirkel instanceof Cirkel) {
             Cirkel otherCirkel = (Cirkel) andereCirkel;
 
             if ( (this.getMiddelpunt() == otherCirkel.getMiddelpunt() ) &&

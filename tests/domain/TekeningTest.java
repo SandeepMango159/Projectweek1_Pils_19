@@ -94,48 +94,104 @@ public class TekeningTest {
     }
 
     @Test
-    public void equals_moet_true_teruggeven_alsparameter_tekening_is_met_zelfde_aantal_vormen_zelfde_volgorde(){
+    public void equals_moet_true_teruggeven_als_parameter_tekening_is_met_zelfde_aantal_vormen_zelfde_volgorde(){
         Tekening huis = createHuisZonderShouw();
         Tekening huisMetSchouw = createHuisMetSchouw();
         huisMetSchouw.verwijder(schouwNietInTekening);
         assertTrue(huis.equals(huisMetSchouw));
     }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void Test_voegToe_Moet_exception_teruggeven_Als_parameter_null_is() {
+        Tekening huis = createHuisZonderShouw();
+        huis.voegToe(null);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void Test_voegToe_Moet_exception_teruggeven_Als_parameter_al_in_de_tekening_zit() {
+        Tekening huis = createHuisZonderShouw();
+        huis.voegToe(gebouw);
+    }
+
+    @Test
+    public void Test_voegToe_Moet_true_teruggeven_Als_parameter_nog_niet_in_de_tekening_zit_en_niet_null_is() {
+        Tekening huis = createHuisZonderShouw();
+        Tekening huisTwee = createHuisMetSchouw();
+        huis.voegToe(schouwNietInTekening);
+        assertTrue(huis.equals(huisTwee));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void Test_getVorm_Moet_exception_teruggeven_Als_parameter_negatief_is() {
+        Tekening huis = createHuisZonderShouw();
+        huis.getVorm(-1);
+    }
+
+    @Test
+    public void Test_getVorm_Moet_true_teruggeven_Als_parameter_0_is() {
+        Tekening huis = createHuisZonderShouw();
+        assertEquals(gebouw, huis.getVorm(0) );
+    }
+
+    @Test
+    public void Test_getVorm_Moet_true_teruggeven_Als_parameter_groter_is_dan_0() {
+        Tekening huis = createHuisZonderShouw();
+        assertEquals(deur, huis.getVorm(1));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void Test_verwijder_Moet_exception_teruggeven_Als_parameter_null_is() {
+        Tekening huis = createHuisZonderShouw();
+        huis.verwijder(null);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void Test_verwijder_Moet_exception_teruggeven_Als_parameter_niet_in_de_tekening_zit() {
+        Tekening huis = createHuisZonderShouw();
+        huis.verwijder(schouwNietInTekening);
+    }
+
+    @Test
+    public void Test_verwijder_Moet_true_teruggeven_Als_parameter_in_de_tekening_zit() {
+        Tekening huis = createHuisZonderShouw();
+        huis.verwijder(raam);
+        assertFalse(huis.bevat(raam));
+    }
 
     public Tekening createHuisMetSchouw() {
         Tekening huisMetSchouw = new Tekening("huisMetSchouw");
         huisMetSchouw.voegToe(gebouw);
-        huisMetSchouw.voegToe(dak);
         huisMetSchouw.voegToe(deur);
         huisMetSchouw.voegToe(raam);
         huisMetSchouw.voegToe(deurknop);
         huisMetSchouw.voegToe(raambalk1);
         huisMetSchouw.voegToe(raambalk2);
         huisMetSchouw.voegToe(schouwNietInTekening);
+        huisMetSchouw.voegToe(dak);
         return huisMetSchouw;
     }
 
     public Tekening createHuisZonderShouw() {
         Tekening huis = new Tekening("huis");
         huis.voegToe(gebouw);
-        huis.voegToe(dak);
         huis.voegToe(deur);
         huis.voegToe(raam);
         huis.voegToe(deurknop);
         huis.voegToe(raambalk1);
         huis.voegToe(raambalk2);
+        huis.voegToe(dak);
         return huis;
     }
 
     public Tekening createHuisMetSchouwZonderDeur() {
         Tekening huisMetSchouwZonderDeur = new Tekening("huisMetSchouwZonderDeur");
         huisMetSchouwZonderDeur.voegToe(gebouw);
-        huisMetSchouwZonderDeur.voegToe(dak);
         huisMetSchouwZonderDeur.voegToe(raam);
         huisMetSchouwZonderDeur.voegToe(deurknop);
         huisMetSchouwZonderDeur.voegToe(raambalk1);
         huisMetSchouwZonderDeur.voegToe(raambalk2);
         huisMetSchouwZonderDeur.voegToe(schouwNietInTekening);
+        huisMetSchouwZonderDeur.voegToe(dak);
         return huisMetSchouwZonderDeur;
     }
 

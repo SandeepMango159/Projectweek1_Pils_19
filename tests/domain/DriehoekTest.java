@@ -1,8 +1,10 @@
-
 package domain;
 
 import static org.junit.Assert.*;
 
+import domain.DomainException;
+import domain.Driehoek;
+import domain.Punt;
 import org.junit.Test;
 
 public class DriehoekTest {

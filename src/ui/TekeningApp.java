@@ -34,11 +34,9 @@ public class TekeningApp {
                 toonWaarschuwing("Naam van een tekening moet minimum 1 niet spatie bevatten");
             }else {
                 tekening = new Tekening(naamTekening);
-
                 root.getChildren().clear();
                 root.add(keuzeMenu,0,0);
                 root.add(uitvoer, 3, 0);
-
                 uitvoer.setPrefRowCount(1);
                 uitvoer.setPrefColumnCount(40);
                 uitvoer.setVisible(false);
@@ -47,26 +45,18 @@ public class TekeningApp {
         keuzeMenu.setOnAction(eventKeuze -> {
             uitvoer.setVisible(false);
             if (keuzeMenu.getValue() != null) {
-
                 if (keuzeMenu.getValue().equals("Vorm maken")) {
                     keuzeMenu.setValue("");
                     new VormMakenApp(root, tekening);
-
                 } else if (keuzeMenu.getValue().equals("Tekening tonen")) {
                     keuzeMenu.setValue("");
                     uitvoer.setPrefRowCount(tekening.getAantalVormen()*2);
                     uitvoer.setText(tekening.toString());
                     uitvoer.setVisible(true);
-
-
                 } else if (keuzeMenu.getValue().equals("stop")) {
-
                 }
-
             }
         });
-
-
     }
 
     public void toonWaarschuwing(String s){

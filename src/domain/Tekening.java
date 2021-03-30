@@ -31,10 +31,16 @@ public class Tekening {
     }
 
     public void voegToe(Vorm vorm) {
+        if (vorm == null || this.bevat(vorm)) {
+            throw new IllegalArgumentException();
+        }
         this.vormen.add(vorm);
     }
 
     public Vorm getVorm(int i) {
+        if (i < 0) {
+            throw new IllegalArgumentException();
+        }
         return this.vormen.get(i);
     }
 
@@ -43,10 +49,16 @@ public class Tekening {
     }
 
     public void verwijder(Vorm vorm) {
+        if (vorm == null || !this.bevat(vorm)) {
+            throw new IllegalArgumentException();
+        }
         this.vormen.remove(vorm);
     }
 
     public boolean bevat (Vorm vorm) {
+        if (vorm == null) {
+            throw new IllegalArgumentException();
+        }
         return this.vormen.contains(vorm);
     }
 
@@ -54,15 +66,25 @@ public class Tekening {
     public boolean equals(Object obj) {
         if (obj instanceof Tekening) {
             Tekening tekening = (Tekening) obj;
-            if (this.naam == tekening.naam && this.vormen.equals(tekening.vormen)) {
-                return true;
+            if (tekening.vormen.size() != this.vormen.size()) {
+                return false;
             }
+            for (Vorm v : this.vormen) {
+                if (!tekening.bevat(v)) {
+                    return false;
+                }
+            }
+            return true;
         }
         return false;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        String result = "Naam van de tekening: " + this.getNaam() + "\nDe vormen in deze tekening: ";
+        for (Vorm v : vormen) {
+            result += v.toString() + "\n";
+        }
+        return result;
     }
 }
