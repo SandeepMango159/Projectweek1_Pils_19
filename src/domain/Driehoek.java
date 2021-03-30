@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Arrays;
 
-public class Driehoek {
+public class Driehoek extends Vorm {
 
 
 
@@ -29,7 +29,7 @@ public class Driehoek {
 
         // Heb in aparte ifs voor leesbaarheid
         // Check al of niet null
-        if ((hoekpunt1 != null) || (hoekpunt2 != null) || (hoekpunt3 != null)) {
+        if ((hoekpunt1 != null) && (hoekpunt2 != null) && (hoekpunt3 != null)) {
             // De hoekpunten mogen niet samenvallen (twee aan twee)
             if ( (!hoekpunt1.equals(hoekpunt2)) && (!hoekpunt1.equals(hoekpunt3)) && (!hoekpunt2.equals(hoekpunt3)) ) {
                 // Hoekpunten mogen niet op 1 lijn liggen
@@ -40,17 +40,17 @@ public class Driehoek {
                 }
                 // Liggen op 1 lijn
                 else {
-                    throw new IllegalArgumentException("Je punten mogen niet op 1 lijn liggen");
+                    throw new DomainException("Je punten mogen niet op 1 lijn liggen");
                 }
             }
             // Hoekpunten vallen samen
             else {
-                throw new IllegalArgumentException("Je hoekpunten mogen niet samenvallen");
+                throw new DomainException("Je hoekpunten mogen niet samenvallen");
             }
         }
         // Een hoekpunt is null
         else {
-            throw new IllegalArgumentException("Je hoekpunten mogen niet null zijn");
+            throw new DomainException("Je hoekpunten mogen niet null zijn");
         }
     }
 
@@ -83,10 +83,7 @@ public class Driehoek {
         gesorteerdeHoekpunten[0] = getHoekPunt1();
         gesorteerdeHoekpunten[1] = getHoekPunt2();
         gesorteerdeHoekpunten[2] = getHoekPunt3();
-
         Arrays.sort(gesorteerdeHoekpunten);
-
-
 
     }
 

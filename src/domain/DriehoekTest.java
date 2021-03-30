@@ -74,4 +74,10 @@ public class DriehoekTest {
         System.out.println(driehoek.toString());
     }
 
+    @Test(expected = DomainException.class)
+    public void test_hoekpunten_op_1_lijn_gooit_een_exception() {
+        Driehoek test = new Driehoek(punt1, zelfdeAlsPunt1, punt2);
+
+    }
+
 }
