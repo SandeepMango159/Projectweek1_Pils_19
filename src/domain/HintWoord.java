@@ -6,6 +6,9 @@ public class HintWoord {
     private HintLetter[] hintwoord;
 
     public HintWoord(String woord){
+        if (woord == null || woord.isEmpty()) {
+            throw new DomainException("Invalid word");
+        }
         HintLetter[] array = new HintLetter[woord.length()];
         for (int i = 0; i < woord.length(); i++){
             array[i] = new HintLetter(woord.charAt(i));

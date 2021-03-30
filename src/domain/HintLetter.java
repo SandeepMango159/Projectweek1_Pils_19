@@ -9,7 +9,7 @@ public class HintLetter {
     private boolean isGeraden = false;
 
     public HintLetter(char letter) {
-        this.letter = letter;
+        this.letter = Character.toLowerCase(letter);
     }
 
     public char getLetter() {
@@ -25,7 +25,10 @@ public class HintLetter {
     }
 
     public boolean raad(char c) {
-        if (c == getLetter()) {
+        if (isGeraden) {
+            return false;
+        }
+        else if (Character.toLowerCase(c) == getLetter()) {
             setGeraden(true);
             return true;
         } else {
