@@ -10,6 +10,9 @@ public class HintLetter {
 
     public HintLetter(char letter) {
         this.letter = Character.toLowerCase(letter);
+        if (letter == ' ') {
+            isGeraden = true;
+        }
     }
 
     public char getLetter() {
