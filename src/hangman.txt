@@ -1,3 +1,21 @@
+negus
+iridocyclitis
+pneumonoultramicroscopicsilicovolcanoconiosis
+misspell
+pharaoh
+weird
+intelligence
+pronunciation
+handkerchief
+logorrhea
+Chiaroscurist
+Pochemuchka
+Gobbledegook
+meteorologisch
+defibrilleren
+bavarois
+cholesterol
+aluminium
 overerving
 statisch type
 dynamisch type
@@ -10,4 +28,3 @@ NullPointerException
 junit test
 test first development
 interface
-woorden
