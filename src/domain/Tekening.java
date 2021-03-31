@@ -97,7 +97,10 @@ public class Tekening implements Drawable{
     @Override
     public void teken(Pane root) {
         for (Vorm v : vormen) {
-            v.teken(root);
+            if (v.isZichtbaar()) {
+//                System.out.println("nu aan het tenenen: " + v.toString());
+                v.teken(root);
+            }
         }
     }
 }
