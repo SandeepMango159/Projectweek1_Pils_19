@@ -1,6 +1,5 @@
 package ui;
 
-import db.WoordenLezer;
 import domain.HintWoord;
 import domain.Speler;
 import domain.WoordenLijst;
@@ -16,8 +15,8 @@ public class WoordRadenApp {
     private int aantalZetten;
 
     public WoordRadenApp(GridPane root, Speler speler){
-        WoordenLezer woordenLezer = new WoordenLezer();
-        HintWoord woord = new HintWoord(woordenLezer.getRandomWoord());
+        WoordenLijst woordenLijst = new WoordenLijst();
+        HintWoord woord = new HintWoord(woordenLijst.getRandomWoord());
         rarara = new Label("Rarara, welk woord zoeken we?");
         hints = new Label(woord.toString());
         geefLetter = new Label("Geef een letter:");

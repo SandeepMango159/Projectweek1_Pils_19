@@ -11,6 +11,7 @@ public class TekeningHangMan extends Tekening {
 
         setUpVormen();
 
+        this.aantalOnzichtbaar = this.getAantalVormen() - 4;
     }
 
     private void setUpVormen() {
@@ -76,6 +77,7 @@ public class TekeningHangMan extends Tekening {
         // Maak volgende zichtbaar
         if (index <= this.getAantalVormen() -1) {
             this.getVorm(index++).setZichtbaar(true);
+            this.aantalOnzichtbaar--;
 //            System.out.println("index is " + index);
         }
         else {

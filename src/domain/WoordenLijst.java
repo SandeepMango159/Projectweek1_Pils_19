@@ -1,6 +1,5 @@
 package domain;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,7 @@ public class WoordenLijst {
     private List<String> woorden;
 
     public WoordenLijst() {
-        this.woorden = new ArrayList<String>();
+        this.woorden = new ArrayList<>();
     }
 
     public int getAantalWoorden() {
