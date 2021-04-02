@@ -20,7 +20,9 @@ public class FxHangManApp extends Application {
         WoordenLijst woordenlijst = woordenlezer.lees();
 
         VBox root = new VBox();
-        Scene scene = new Scene(root,400,450);
+
+        Scene scene = new Scene(root,450,500);
+
         TextField invoerNaam = new TextField("Geef de naam van de speler");
         root.getChildren().add(invoerNaam);
 

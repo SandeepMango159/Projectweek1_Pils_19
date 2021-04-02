@@ -3,6 +3,7 @@ package ui;
 import domain.HangMan;
 import domain.Speler;
 import domain.WoordenLijst;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -12,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class HangManApp {
-    private HBox hbox= new HBox();
+    private HBox hbox= new HBox(10);
     private HBox invoerBox = new HBox();
 
     private Text hintwoordUitvoer = new Text();
@@ -30,6 +31,8 @@ public class HangManApp {
         this.tekening = new TekenVensterApp(pane,this.hangman.getTekening());
 
         hintwoordUitvoer.setText(this.hangman.getHint());
+        hbox.setPadding(new Insets(10, 0, 5, 20));
+        invoerBox.setPadding(new Insets(10, 0, 5, 10));
         hbox.setAlignment(Pos.BOTTOM_LEFT);
         hbox.getChildren().add(hintwoordUitvoer);
         hbox.getChildren().add(raadButton);
